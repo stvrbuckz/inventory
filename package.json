@@ -1,0 +1,17 @@
+{
+  "name": "inventory",
+  "version": "1.0.0",
+  "description": "# system requirements 1. Install PostgreSQL (https://www.postgresql.org/download/)",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback"
+  },
+  "keywords": [],
+  "author": "Priya Bhatti",
+  "license": "ISC",
+  "dependencies": {
+    "knex": "^0.95.4",
+    "pg": "^8.5.1"
+  }
+}
