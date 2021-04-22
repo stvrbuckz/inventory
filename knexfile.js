@@ -1,4 +1,3 @@
-
 module.exports = {
 
   // connects postgres to node via pg module
@@ -10,7 +9,10 @@ module.exports = {
       password: '5700'
     },
     migrations: {
-      folder: './db/migrations'
+      folder: './migrations'
+    },
+    seeds: {
+      folder: './backend/db' 
     }
   },
 };

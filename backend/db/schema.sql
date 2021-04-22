@@ -2,8 +2,9 @@ CREATE TABLE staff (
   "staff_id" int NOT NULL,
   "fname" varchar(30) NOT NULL,
   "lname" varchar(30) NOT NULL,
-  "staff_email" varchar(50) NOT NULL,
-  "staff_role" varchar(20) NOT NULL,
+  "staff_email" varchar(254) NOT NULL,
+  "password" varchar(200) NOT NULL,
+  "role" varchar(20) NOT NULL,
   PRIMARY KEY ("staff_id")
 );
 
@@ -16,7 +17,7 @@ CREATE TABLE category (
 CREATE TABLE product (
   "prod_id" int NOT NULL,
   "cat_id" int NOT NULL,
-  "sku" varchar(11) NOT NULL,
+  "sku" varchar(15) NOT NULL,
   "prod_name" varchar(80) NOT NULL,
   "prod_brand" varchar(50) NOT NULL,
   "prod_size" varchar(20) NULL,
@@ -36,6 +37,7 @@ CREATE TABLE supplier (
   "supplier_id" int NOT NULL,
   "supplier_name" varchar(30) NOT NULL,
   "supplier_address" varchar(50) NOT NULL,
+  "supplier_city" varchar(50) NOT NULL,
   "supplier_telephone" varchar(15) NOT NULL,
   "supplier_email" varchar(50) NOT NULL,
   PRIMARY KEY ("supplier_id")
