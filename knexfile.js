@@ -10,9 +10,6 @@ module.exports = {
     },
     migrations: {
       folder: './migrations'
-    },
-    seeds: {
-      folder: './backend/db' 
     }
   },
 };

@@ -4,8 +4,6 @@ const Knex = require('knex');
  * @param {Knex} knex 
  */
 
-// \i C:/Users/priya/Documents/Uni/Third/Project/WebApp/V.2/backend/db/seed.sql
-
 // created_at, updated_at and deleted_at timestamp columns
 function addDefaultDates(table) {
   table.timestamps(false, true);
@@ -106,6 +104,12 @@ exports.up = async (knex) => {
     addDefaultDates(table);
   });
 
+  await knex.schema.createTable('productlowstock', (table) => {
+    table.integer('prod_id').unsigned().notNullable();
+    addDefaultDates(table);
+  });
+
+  // adding a connection to FKs
   knex.schema.alterTable('orderdetails', (table) => {
     order_id.references(column.inTable(productorder));
     prod_id.references(column.inTable(product));
@@ -117,12 +121,17 @@ exports.up = async (knex) => {
     supplier_id.references(column.inTable(supplier));
   });
 
-  knex.schema.alterTable('productsupplier', (table) => {
+  knex.schema.alterTable('purchaseproduct', (table) => {
     purchase_id.references(column.inTable(purchase));
+    prod_id.references(column.inTable(product));
+  }); 
+
+  knex.schema.alterTable('productlowstock', (table) => {
     prod_id.references(column.inTable(product));
   });
 };
 
+// deletes all tables
 exports.down = async (knex) => {
   await Promise.all([
     'product', 
@@ -134,5 +143,6 @@ exports.down = async (knex) => {
     'category',
     'supplier',
     'purchase',
+    'productlowstock',
   ].map((tableName) => knex.schema.dropTable(tableName)));
 };

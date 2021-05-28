@@ -1,6 +1,6 @@
 
 -- Category
-INSERT INTO category (cat_id,cat_name) VALUES (1,'Alcohol');
+INSERT INTO "category" (cat_id,cat_name) VALUES (1,'Alcohol');
 INSERT INTO "category" (cat_id,cat_name) VALUES (2,'Fresh Produce');
 INSERT INTO "category" (cat_id,cat_name) VALUES (3,'Bread');
 INSERT INTO "category" (cat_id,cat_name) VALUES (4,'Dairy/Eggs');
@@ -403,15 +403,4 @@ INSERT INTO "product" ("prod_id","cat_id","sku","prod_name","prod_brand","prod_s
 INSERT INTO "product" ("prod_id","cat_id","sku","prod_name","prod_brand","prod_size","colour","prod_price","location","is_available","available_quantity","is_discount","manufactured") VALUES (169,10,'CDM-CAR-110','Dairy Milk Caramel','Cadbury','110g','Purple',1.50,'RA-3',True,19,False,'16.11.2020');
 INSERT INTO "product" ("prod_id","cat_id","sku","prod_name","prod_brand","prod_size","colour","prod_price","location","is_available","available_quantity","is_discount","manufactured") VALUES (170,10,'CDM-FRN-110','Dairy Milk Fruit & Nut','Cadbury','110g','Purple',1.50,'RA-3',True,21,False,'18.12.2020');
 INSERT INTO "product" ("prod_id","cat_id","sku","prod_name","prod_brand","prod_size","colour","prod_price","location","is_available","available_quantity","is_discount","manufactured") VALUES (171,10,'CDM-WHN-110','Dairy Milk Whole Nut','Cadbury','110g','Purple',1.50,'RA-3',True,17,False,'21.11.2020');
-
-
-
-
-
-
-
-
-
-
-
 

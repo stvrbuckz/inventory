@@ -23,7 +23,7 @@ CREATE TABLE product (
   "prod_size" varchar(20) NULL,
   "colour" varchar(10) NULL,
   "prod_price" decimal(5,2) NOT NULL,
-  "location" varchar(3) NULL,
+  "location" varchar(34 NULL,
   "prod_descrip" varchar(150) NULL,
   "is_available" boolean NOT NULL,
   "available_quantity" int NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE supplier (
   "supplier_address" varchar(50) NOT NULL,
   "supplier_city" varchar(50) NOT NULL,
   "supplier_telephone" varchar(15) NOT NULL,
-  "supplier_email" varchar(50) NOT NULL,
+  "supplier_email" varchar(254) NOT NULL,
   PRIMARY KEY ("supplier_id")
 );
 
@@ -75,4 +75,8 @@ CREATE TABLE purchaseProduct (
   "purchase_id" int NOT NULL REFERENCES purchase(purchase_id),
   "prod_id" int NOT NULL REFERENCES product(prod_id),
   "purchase_quantity" int NOT NULL
+);
+
+CREATE TABLE productLowStock (
+"prod_id" int NOT NULL REFERENCES product(prod_id)
 );
