@@ -1,14 +1,32 @@
-const { Pool, Client} = require("pg");
+const express = require('express');
+const api = require('./api');
 
-// postgreSQL connection 
-const pool = new Pool ({
-    user: "postgres",
-    host: "localhost",
-    database: "inventory",
-    password: "5700",
-    port: "5432"
+// creates the app
+const app = express();
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Inventory App',
+    });
 });
 
-pool.on('error', (err, client) => {
-    console.error('Error:', err);
-});
+app.use('/api/routes', api);
+
+// error handlers
+function notFound(req, res, next) {
+    const error = new Error('Not Found.');
+    res.status(404);
+    next(error);
+};
+
+function errorHandler(error, req, res, next) {
+    const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+    res.status(status);
+    res.json({
+        message: error.message
+    });
+}
+
+module.exports = app;

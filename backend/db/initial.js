@@ -1,4 +1,4 @@
-
+// to seed in data entries
 exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex('table_name').del()
