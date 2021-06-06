@@ -1,17 +1,25 @@
 const express = require('express');
 const api = require('./api');
+const app = express(); // creates the app
+const bodyParser = require('body-parser');
+const path = require('path');
 
-// creates the app
-const app = express();
+app.use(express.static('static'));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.json({
-        message: 'Inventory App',
-    });
+    res.sendFile(path.resolve('./frontEnd/index.html'));
 });
 
+app.get('/api/orderForm', (req, res) => {
+    res.sendFile(path.resolve('./frontEnd/orderForm.html'));
+});
+
+// routes
 app.use('/api/routes', api);
 
 // error handlers

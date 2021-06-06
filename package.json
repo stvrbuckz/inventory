@@ -4,7 +4,7 @@
   "description": "# system requirements 1. Install PostgreSQL (https://www.postgresql.org/download/)",
   "main": "backend/index.js",
   "scripts": {
-    "start": "node backend/index.js",
+    "start": "nodemon backend/index.js",
     "dev": "nodemon src/index.js",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.95.4",
+    "knex": "^0.95.6",
     "pg": "^8.5.1"
   },
   "devDependencies": {

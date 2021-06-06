@@ -11,4 +11,3 @@ describe('GET /api/routes/products', () => {
         expect(response.body.length).toBeGreaterThan(0);
     });
 });
-

@@ -8,7 +8,7 @@ app.listen(port, () => {
     console.log(`Listening at ${port}`);
 });
 
-// postgreSQL connection 
+// // postgreSQL connection 
 // const pool = new Pool ({
 //     user: "postgres",
 //     host: "localhost",

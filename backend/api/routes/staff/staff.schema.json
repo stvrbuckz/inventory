@@ -1,0 +1,104 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Staff",
+    "description": "Staff members",
+    "default": {},
+    "examples": [
+        [
+            {
+                "staff_id": 1,
+                "fname": "Jack",
+                "lname": "Wilson",
+                "staff_email": "J.Wilson@gmail.com",
+                "role": "Assistant",
+                "created_at": "2021-06-02T00:38:36.576Z",
+                "updated_at": "2021-06-02T00:38:36.576Z"
+            }
+        ]
+    ],
+    "additionalItems": true,
+    "items": {
+        "$id": "#/items",
+        "anyOf": [
+            {
+                "$id": "#/items/anyOf/0",
+                "type": "object",
+                "title": "The first anyOf schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                    {
+                        "staff_id": 1,
+                        "fname": "Jack",
+                        "lname": "Wilson",
+                        "staff_email": "J.Wilson@gmail.com",
+                        "role": "Assistant",
+                        "created_at": "2021-06-02T00:38:36.576Z",
+                        "updated_at": "2021-06-02T00:38:36.576Z"
+                    }
+                ],
+                "required": [
+                    "staff_id",
+                    "fname",
+                    "lname",
+                    "staff_email",
+                    "password",
+                    "role",
+                    "created_at",
+                    "updated_at"
+                ],
+                "properties": {
+                    "staff_id": {
+                        "$id": "#/items/anyOf/0/properties/staff_id",
+                        "type": "integer",
+                        "title": "The ID"
+                    },
+                    "fname": {
+                        "$id": "#/items/anyOf/0/properties/fname",
+                        "type": "string",
+                        "title": "The staff member's first name",
+                        "examples": [
+                            "Jack"
+                        ]
+                    },
+                    "lname": {
+                        "$id": "#/items/anyOf/0/properties/lname",
+                        "type": "string",
+                        "title": "The staff member's last name",
+                        "examples": [
+                            "Wilson"
+                        ]
+                    },
+                    "staff_email": {
+                        "$id": "#/items/anyOf/0/properties/staff_email",
+                        "type": "string",
+                        "title": "The staff_email must be unique",
+                        "examples": [
+                            "J.Wilson@gmail.com"
+                        ]
+                    },
+                    "role": {
+                        "$id": "#/items/anyOf/0/properties/role",
+                        "type": "string",
+                        "title": "The staff member's role",      
+                        "examples": [
+                            "Assistant"
+                        ]
+                    },
+                    "created_at": {
+                        "$id": "#/items/anyOf/0/properties/created_at",
+                        "type": "string",
+                        "title": "The creation date of the staff member"
+                    },
+                    "updated_at": {
+                        "$id": "#/items/anyOf/0/properties/updated_at",
+                        "type": "string",
+                        "title": "The updated date of the staff member"
+                    }
+                },
+                "additionalProperties": false
+            }
+        ]
+    }
+}
