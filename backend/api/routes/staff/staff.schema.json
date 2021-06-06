@@ -52,7 +52,7 @@
                     "staff_id": {
                         "$id": "#/items/anyOf/0/properties/staff_id",
                         "type": "integer",
-                        "title": "The ID"
+                        "title": "The ID of staff member"
                     },
                     "fname": {
                         "$id": "#/items/anyOf/0/properties/fname",
@@ -73,10 +73,15 @@
                     "staff_email": {
                         "$id": "#/items/anyOf/0/properties/staff_email",
                         "type": "string",
-                        "title": "The staff_email must be unique",
+                        "title": "The staff email must be unique",
                         "examples": [
                             "J.Wilson@gmail.com"
                         ]
+                    },
+                    "password": {
+                        "$id": "#/items/anyOf/0/properties/password",
+                        "type": "string",
+                        "title": "The password"
                     },
                     "role": {
                         "$id": "#/items/anyOf/0/properties/role",
