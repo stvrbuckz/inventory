@@ -1,6 +1,5 @@
 const express = require('express');
 const staffMember = require('./staff.model');
-const staffMember = require('./staff.model');
 const router = express.Router();
 
 // calls the query to get staff table info
@@ -20,6 +19,5 @@ router.post('/', async (req, res) => {
          
     }
 });
-
 
 module.exports = router;

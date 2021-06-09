@@ -1,26 +1,22 @@
 const express = require('express');
 const api = require('./api');
 const app = express(); // creates the app
-const bodyParser = require('body-parser');
 const path = require('path');
 
-app.use(express.static('static'));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
+app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve('./frontEnd/index.html'));
+    res.sendFile(path.resolve('./public/index.html'));
 });
 
 app.get('/api/orderForm', (req, res) => {
-    res.sendFile(path.resolve('./frontEnd/orderForm.html'));
+    res.sendFile(path.resolve('./public/orderForm.html'));
 });
 
 // routes
 app.use('/api/routes', api);
+
 
 // error handlers
 function notFound(req, res, next) {

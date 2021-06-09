@@ -1,10 +1,10 @@
 const db = require('../../../db/db');
 const Knex = require('knex');
 
-const fields = ['cat_id', 'cat_name'];
+const fields = ['order_id', 'staff_id', 'order_date'];
 
 module.exports = {
     find() {
-        return db('category').select(fields);
+        return db('productorder').select(fields);
     },
 };
