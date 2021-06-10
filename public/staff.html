@@ -8,12 +8,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Staff</title>
 </head>
 
 <body>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a id="headTitle" class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="dashboard.html">
+        <a id="headTitle" class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">
             <img src="images/logo_white.png" width="35" height="35" alt="[inventory-logo]">
             Inventory
         </a>
@@ -30,16 +30,16 @@
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">
-                                <span data-feather="home"></span>
+                            <a class="nav-link" href="./index.html">
+                                <span data-feather="file"></span>
                                 Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./products.html">
-                                <span data-feather="file"></span>
+                                <span data-feather="bar-chart-2"></span>
                                 Products
-                            </a>
+                            </a>                          
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./suppliers.html">
@@ -55,15 +55,17 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./orders.html">
-                                <span data-feather="bar-chart-2"></span>
+                                <span data-feather="layers"></span>
                                 Orders
                             </a>
+                            
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./staff.html">
-                                <span data-feather="layers"></span>
+                            <a class="nav-link active" aria-current="page" href="./staff.html">
+                                <span data-feather="home"></span>
                                 Staff
                             </a>
+                            
                         </li>
                     </ul>
                 </div>
@@ -71,60 +73,22 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h1 class="h2">Staff</h1>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                         <div class="dash-widget">
                             <span class="dash-widget-bg1"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
                             <div class="dash-widget-info text-right">
-                                <h3>98</h3>
-                                <span class="widget-title1">Products <i class="fa fa-check"
+                                <h3>5</h3>
+                                <span class="widget-title1">Staff<i class="fa fa-check"
                                         aria-hidden="true"></i></span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-                        <div class="dash-widget">
-                            <span class="dash-widget-bg2"><i class="fa fa-user-o"></i></span>
-                            <div class="dash-widget-info text-right">
-                                <h3>1072</h3>
-                                <span class="widget-title2">Suppliers <i class="fa fa-check"
-                                        aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
-                <div class="mainButtons">
-                    <div class="mainBtnsRow">
-                        <button id="products-btn" type="button" class="btn btn-sm btn-outline-secondary">
-                            <a href=""></a>
-                            <img src="images/colouredIcons/product_icon_col.png" width="35" height="35"
-                                alt="[product-icon]">
-                            Products
-                        </button>
-                        <button id="purchases-btn" type="button" class="btn btn-sm btn-outline-secondary">
-                            <img src="images/colouredIcons/purchase_icon_col.png" width="35" height="35"
-                                alt="[purchase-icon]">
-                            Purchases
-                        </button>
-
-                    </div>
-                    <div class="mainBtnsRow">
-                        <button id="suppliers-btn" type="button" class="btn btn-sm btn-outline-secondary">
-                            <img src="images/colouredIcons/supplier_icon_col.png" width="35" height="35"
-                                alt="[supplier-icon]">
-                            Suppliers
-                        </button>
-                        <button id="orders-btn" type="button" class="btn btn-sm btn-outline-secondary">
-                            <img src="images/colouredIcons/order_icon_col.png" width="35" height="35"
-                                alt="[order-icon]">
-                            Orders
-                        </button>
-                    </div>
-
-
-                </div>
+              
             </main>
         </div>
     </div>
