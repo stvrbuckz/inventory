@@ -43,12 +43,17 @@ INSERT INTO "supplier" ("supplier_id","supplier_name","supplier_address","suppli
 
 -- Product Order
 INSERT INTO "productorder" ("order_id","staff_id","order_date") VALUES (1,3,'24.02.2021');
+INSERT INTO "productorder" ("order_id","staff_id","order_date") VALUES (2,3,'05.03.2021');
+INSERT INTO "productorder" ("order_id","staff_id","order_date") VALUES (3,3,'12.04.2021');
 
 -- Order Details
 INSERT INTO "orderdetails" ("order_id","prod_id","supplier_id","supplier_price","order_quantity","order_total") VALUES (1,3,7,12,30,360);
 INSERT INTO "orderdetails" ("order_id","prod_id","supplier_id","supplier_price","order_quantity","order_total") VALUES (1,16,2,20,20,400);
 INSERT INTO "orderdetails" ("order_id","prod_id","supplier_id","supplier_price","order_quantity","order_total") VALUES (1,50,7,0.40,100,40);
 INSERT INTO "orderdetails" ("order_id","prod_id","supplier_id","supplier_price","order_quantity","order_total") VALUES (1,61,5,1.00,60,60);
+INSERT INTO "orderdetails" ("order_id","prod_id","supplier_id","supplier_price","order_quantity","order_total") VALUES (2,37,5,0.40,40,24);
+INSERT INTO "orderdetails" ("order_id","prod_id","supplier_id","supplier_price","order_quantity","order_total") VALUES (2,40,5,0.45,70,31.5);
+INSERT INTO "orderdetails" ("order_id","prod_id","supplier_id","supplier_price","order_quantity","order_total") VALUES (3,46,3,0.40,100,40);
 
 -- Product Supplier
 INSERT INTO "productsupplier" ("prod_id","supplier_id") VALUES (1,2);

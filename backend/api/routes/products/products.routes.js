@@ -1,4 +1,5 @@
 const express = require('express');
+const Product = require('./product.model');
 // imports queries
 const queries = require('./products.queries');
 // gives an instance of a router
@@ -24,5 +25,17 @@ router.get('/:id', async (req, res, next) => {
         next(error);
     }
 });
+
+router.get('/', async (req, res, next) => {
+    // try {
+    //   // TODO: set user id by logged in user
+    //   const product = await Product.query().insert(req.body);
+    //   res.json(product);
+    // } catch (error) {
+    //   next(error);
+    // }
+  });
+
+
 
 module.exports = router;

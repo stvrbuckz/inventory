@@ -40,7 +40,7 @@
                                 <span data-feather="home"></span>
                                 Products
                             </a>
-                            
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./suppliers.html">
@@ -79,13 +79,13 @@
                         <div class="dash-widget">
                             <span class="dash-widget-bg1"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
                             <div class="dash-widget-info text-right">
-                                <h3>98</h3>
+                                <h3 id="totalProducts">0</h3>
                                 <span class="widget-title1">Products <i class="fa fa-check"
                                         aria-hidden="true"></i></span>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
                 <div class="container-xl">
@@ -106,30 +106,28 @@
                         <table class="table table-striped table-hover table-bordered">
                           <thead>
                             <tr>
-                              <th>#</th>
-                              <th>Name <i class="fa fa-sort"></i></th>
-                              <th>Address</th>
-                              <th>City <i class="fa fa-sort"></i></th>
-                              <th>Pin Code</th>
-                              <th>Country <i class="fa fa-sort"></i></th>
-                              <th>Actions</th>
+                              <th>ID</th>
+                              <th>Product Name <i class="fa fa-sort"></i></th>
+                              <th>Product Brand</th>
+                              <th>£<i class="fa fa-sort"></i></th>
+                              <th>Is available</th>
+                              <th>Quantity<i class="fa fa-sort"></i></th>
+                              <th>Location</th>
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody id="tableBody"></tbody>
                             <tr>
-                              <td>1</td>
-                              <td>Thomas Hardy</td>
-                              <td>89 Chiaroscuro Rd.</td>
-                              <td>Portland</td>
-                              <td>97219</td>
-                              <td>USA</td>
-                              <td>
+                              <button id="products-btn" type="button" class="btn btn-sm btn-outline-secondary"
+                              onclick="window.location.href='addproduct.html';">
+                                  <img src="images/colouredIcons/product_icon_col.png" width="35" height="35">
+                                  Add a Product
+                              </button>
+                              
                                 <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
                                 <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                               </td>
                             </tr>
-                        
                           </tbody>
                         </table>
                         <div class="clearfix">
@@ -147,11 +145,43 @@
                       </div>
                     </div>
                   </div>
-              
+
             </main>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
+
+<script>
+const getTableBody = document.querySelector('#tableBody'); // Gets the ID of the table in prep for data insertion
+
+fetch('/api/routes/products')
+.then(function(response) {
+  if (!response.ok) {
+    throw new Error("HTTP error, status = " + response.status);
+  }
+  return response.json();
+})
+.then(function(json) {
+  document.querySelector('#totalProducts').textContent = json.length; // Sets total number of products in top-left
+  // Functionality for get orderDetails thing console.log(json[1].prod_id);
+  for (let product of json) { // Iterates through each returned product
+
+    // Creates a new TR element and assigns it a variable so it can be used to append on to further down in the code
+    let newTableRow = getTableBody.appendChild(document.createElement('tr'));
+
+    // Appends a new TD to the newly created table row, then sets the value of the TD to the returned product data
+    newTableRow.appendChild(document.createElement('td')).textContent = product.prod_id;
+    newTableRow.appendChild(document.createElement('td')).textContent = product.prod_name;
+    newTableRow.appendChild(document.createElement('td')).textContent = product.prod_brand;
+    newTableRow.appendChild(document.createElement('td')).textContent = product.prod_price;
+    newTableRow.appendChild(document.createElement('td')).textContent = product.is_available;
+    newTableRow.appendChild(document.createElement('td')).textContent = product.available_quantity;
+    newTableRow.appendChild(document.createElement('td')).textContent = product.location;
+  }
+})
+
+
+
+</script>
 
 </html>

@@ -39,7 +39,7 @@
                             <a class="nav-link" href="./products.html">
                                 <span data-feather="bar-chart-2"></span>
                                 Products
-                            </a>                          
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./suppliers.html">
@@ -58,7 +58,7 @@
                                 <span data-feather="home"></span>
                                 Orders
                             </a>
-                            
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./staff.html">
@@ -79,18 +79,122 @@
                         <div class="dash-widget">
                             <span class="dash-widget-bg1"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
                             <div class="dash-widget-info text-right">
-                                <h3>5</h3>
-                                <span class="widget-title1">Orders <i class="fa fa-check"
-                                        aria-hidden="true"></i></span>
+                                <h3 id="totalOrders">0</h3>
+                                <span class="widget-title1">Orders <i class="fa fa-check" aria-hidden="true"></i></span>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-              
+
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Staff ID<i class="fa fa-sort"></i></th>
+                            <th>Order Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <a href="#" class="view" title="View" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE417;</i></a>
+                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE254;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
             </main>
         </div>
     </div>
 </body>
+
+<script>
+    const getTableBody = document.querySelector('#tableBody'); // Gets the ID of the table in prep for data insertion
+    // document.querySelector('#tableBody').onclick = function dropDown() {
+    //   console.log('Hi');
+    //   let clickedTableRow = event.target;
+    //   while (clickedTableRow !== this && !clickedTableRow.matches('tr')) {
+    //     clickedTableRow = clickedTableRow.parentNode;
+    //   }
+    //   if (clickedTableRow === this) {
+    //     console.log('No table cell found');
+    //   } else {
+    //     console.log(clickedTableRow.innerHTML);
+    //   }
+    // }
+
+    document.querySelector('#tableBody').addEventListener('click', function (event) {
+        let tr = event.target; // Sets event target variable
+        while (tr !== this && !tr.matches('tr')) { // if event target matches a row, grab parent node
+            tr = tr.parentNode;
+            console.log(tr);
+            //console.log(tr > tr.textContent);
+            // This won't work below yet, gotta extract the order_id first, and then pass that in inplace of 'tr' below!!!
+            //fetch('api/routes/orderDetails/' + tr) // Performs a db query in orderDetails upon a row being clicked
+            fetch('api/routes/products/1')
+                .then(function (res) {
+                    if (!res.ok) {
+                        throw new Error("HTTP error, status = " + response.status)
+                    }
+                    return res.json();
+                })
+                .then(function (ordDetJson) {
+                    limit = 0;
+                    if (limit => 1) {
+                        limit = limit + 1;
+                        console.log(ordDetJson);
+                        // let expandTableRow = tr.insertBefore(document.createElement('tr')); // Maybe create this with a class ID to edit???
+                        const newRow = document.createElement('tr');
+                        let expandTableRow = tr.parentNode.insertBefore(newRow, tr.nextSibling)
+                        expandTableRow.appendChild(document.createElement('td')).textContent = ordDetJson
+                            .prod_id;
+                        expandTableRow.appendChild(document.createElement('td')).textContent = ordDetJson
+                            .prod_name;
+                        expandTableRow.appendChild(document.createElement('td')).textContent = ordDetJson
+                            .prod_brand;
+                    } else {
+                        console.log('Limit reached');
+                    }
+                    // for (let orderExpanded of ordDetJson) {
+                    //   expandTableRow.appendChild(document.createElement('td')).textContent = orderExpanded.prod_id;
+                    //   expandTableRow.appendChild(document.createElement('td')).textContent = orderExpanded.prod_name;
+                    //   expandTableRow.appendChild(document.createElement('td')).textContent = orderExpanded.prod_brand;
+                    // }
+                })
+        }
+        if (tr === this) {
+            console.log('No table cell found');
+        } else {
+            //document.querySelector
+            console.log(tr.innerHTML);
+        }
+    })
+
+
+    fetch('/api/routes/order')
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error("HTTP error, status = " + response.status);
+            }
+            return response.json();
+        })
+        .then(function (json) {
+            document.querySelector('#totalOrders').textContent = json.length; // Sets total staff counter in the top-left of screen to current number of staff
+            console.log(json);
+            for (let prodOrder of json) { // Iterates through each returned product
+                // Populates an individual TD with its respective returned .json data
+                let newTableRow = getTableBody.appendChild(document.createElement('tr'));
+                newTableRow.appendChild(document.createElement('td')).textContent = prodOrder.order_id;
+                newTableRow.appendChild(document.createElement('td')).textContent = prodOrder.staff_id;
+                newTableRow.appendChild(document.createElement('td')).textContent = prodOrder.order_date;
+            }
+        })
+</script>
 
 </html>

@@ -39,7 +39,7 @@
                             <a class="nav-link" href="./products.html">
                                 <span data-feather="bar-chart-2"></span>
                                 Products
-                            </a>                          
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./suppliers.html">
@@ -58,14 +58,14 @@
                                 <span data-feather="layers"></span>
                                 Orders
                             </a>
-                            
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="./staff.html">
                                 <span data-feather="home"></span>
                                 Staff
                             </a>
-                            
+
                         </li>
                     </ul>
                 </div>
@@ -75,23 +75,74 @@
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Staff</h1>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                         <div class="dash-widget">
                             <span class="dash-widget-bg1"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
                             <div class="dash-widget-info text-right">
-                                <h3>5</h3>
-                                <span class="widget-title1">Staff<i class="fa fa-check"
-                                        aria-hidden="true"></i></span>
+                                <h3 id="totalStaff">0</h3>
+                                <span class="widget-title1">Staff<i class="fa fa-check" aria-hidden="true"></i></span>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-              
+
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First name <i class="fa fa-sort"></i></th>
+                            <th>Last name</th>
+                            <th>Email<i class="fa fa-sort"></i></th>
+                            <th>Role<i class="fa fa-sort"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <a href="#" class="view" title="View" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE417;</i></a>
+                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE254;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
             </main>
         </div>
     </div>
 </body>
+
+<script>
+    const getTableBody = document.querySelector('#tableBody'); // Gets the ID of the table in prep for data insertion
+
+    fetch('/api/routes/staff')
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error("HTTP error, status = " + response.status);
+            }
+            return response.json();
+        })
+        .then(function (json) {
+            document.querySelector('#totalStaff').textContent = json
+                .length; // Sets total staff counter in the top-left of screen to current number of staff
+
+            for (let staff of json) { // Iterates through each returned product
+
+                // Populates an individual TD with its respective returned .json data
+                let newTableRow = getTableBody.appendChild(document.createElement('tr'));
+                newTableRow.appendChild(document.createElement('td')).textContent = staff.staff_id;
+                newTableRow.appendChild(document.createElement('td')).textContent = staff.fname;
+                newTableRow.appendChild(document.createElement('td')).textContent = staff.lname;
+                newTableRow.appendChild(document.createElement('td')).textContent = staff.staff_email;
+                newTableRow.appendChild(document.createElement('td')).textContent = staff.role;
+
+            }
+        });
+</script>
 
 </html>

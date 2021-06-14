@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+</head>
+
+<body>
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a id="headTitle" class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">
+      <img src="images/logo_white.png" width="35" height="35" alt="[inventory-logo]">
+      Inventory
+    </a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">
+                <span data-feather="file"></span>
+                Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./products.html">
+                <span data-feather="home"></span>
+                Products
+              </a>
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./suppliers.html">
+                <span data-feather="shopping-cart"></span>
+                Suppliers
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./purchases.html">
+                <span data-feather="users"></span>
+                Purchases
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./orders.html">
+                <span data-feather="bar-chart-2"></span>
+                Orders
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./staff.html">
+                <span data-feather="layers"></span>
+                Staff
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Add a Product</h1>
+        </div>
+
+
+        <div class="container-xl">
+          <form id="addProductForm" name="addProductForm">
+
+            <label for="prod_name">Product Name <b>*</b> </label>
+            <input type="text" id="prod_name" name="prod_name" required="required">
+
+            <label for="prod_brand">Product Brand <b> * </b> </label>
+            <input type="text" id="prod_brand" name="prod_brand" required="required">
+
+            <label for="sku">SKU <b> * </b> </label>
+            <input type="text" id="sku" name="sku">
+
+            <label for="prod_price">Price <b> * </b> </label>
+            <input type="number" min="0" max="100" id="prod_price" required="required" name="prod_price">
+
+            <label for="available_quantity">Quantity <b> * </b> </label>
+            <input type="number" id="available_quantity" name="available_quantity" min="1">
+
+            <label for="is_available">Available? <b> * </b> </label>
+            <input type="type" id="is_available" placeholder="Type True or False" name="is_available">
+
+            <label for="discount">Discount? <b> * </b> </label>
+            <input type="text" id="discount" placeholder="Type True or False" name="discount">
+
+
+            <label for="cat_id">Category ID:</label>
+            <input type="number" id="cat_id" name="cat_id" min="1">
+
+            <label for="colour">Colour</label>
+            <input type="text" id="colour" name="colour">
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location">
+
+            <label for="prod_size">Size</label>
+            <input type="text" id="prod_size" name="prod_size">
+
+            <label for="prod_descrip">Description</label>
+            <textarea id="prod_descrip" name="prod_descrip"></textarea>
+
+            <label for="discount">Discount Amount</label>
+            <input type="number" id="discount_amt" name="discount_amt" min="1.1">
+
+            <label for="manufactured">Manufactured</label>
+            <input type="date" id="manufactured" value="2018-07-22">
+
+            <input type="submit" value="Submit" id="products-btn" class="btn btn-sm btn-outline-secondary submitBtn">
+          </form>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+</body>
+
+<script>
+
+  function addItems() {
+    const getForm = document.querySelector('#addProductForm'); // Gets the ID of the upload form
+    let formData = new FormData(getForm); // Assign the returned form to the FormData function
+    //console.log(formData);
+    for (let vals of formData.entries()) {
+      console.log(vals);
+    }
+}
+
+  // fetch('/api/routes/products')
+  //   .then(function(response) {
+  //     if (!response.ok) {
+  //       throw new Error("HTTP error, status = " + response.status);
+  //     }
+  //     return response.json();
+  //   })
+
+</script>
+
+</html>

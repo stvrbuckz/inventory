@@ -78,7 +78,20 @@
                         <div class="dash-widget">
                             <span class="dash-widget-bg1"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
                             <div class="dash-widget-info text-right">
-                                <h3>98</h3>
+                                <h3 id="totalProducts">0</h3>
+                                <script>
+                                    fetch('/api/routes/products')
+                                        .then(function (response) {
+                                            if (!response.ok) {
+                                                throw new Error("HTTP error, status = " + response.status);
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(function (json) {
+                                            document.querySelector('#totalProducts').textContent = json
+                                                .length;
+                                        });
+                                </script>
                                 <span class="widget-title1">Products <i class="fa fa-check"
                                         aria-hidden="true"></i></span>
                             </div>
@@ -88,41 +101,73 @@
                         <div class="dash-widget">
                             <span class="dash-widget-bg2"><i class="fa fa-user-o"></i></span>
                             <div class="dash-widget-info text-right">
-                                <h3>1072</h3>
-                                <span class="widget-title2">Suppliers <i class="fa fa-check"
-                                        aria-hidden="true"></i></span>
+                                <h3 id="totalStaff">0</h3>
+                                <script>
+                                    fetch('/api/routes/staff')
+                                        .then(function (response) {
+                                            if (!response.ok) {
+                                                throw new Error("HTTP error, status = " + response.status);
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(function (json) {
+                                            document.querySelector('#totalStaff').textContent = json
+                                                .length;
+                                        });
+                                </script>
+                                <span class="widget-title2">Staff <i class="fa fa-check" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg1"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3 id="totalOrders">0</h3>
+                                <script>
+                                    fetch('/api/routes/order')
+                                        .then(function (response) {
+                                            if (!response.ok) {
+                                                throw new Error("HTTP error, status = " + response.status);
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(function (json) {
+                                            document.querySelector('#totalOrders').textContent = json
+                                                .length; // Sets total staff counter in the top-left of screen to current number of staff
+                                        });
+                                </script>
+                                <span class="widget-title1">Orders <i class="fa fa-check" aria-hidden="true"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mainButtons">
                     <div class="mainBtnsRow">
-                        <button id="products-btn" type="button" class="btn btn-sm btn-outline-secondary">
-                            <a href=""></a>
+                        <button id="products-btn" type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='products.html';">
                             <img src="images/colouredIcons/product_icon_col.png" width="35" height="35"
                                 alt="[product-icon]">
                             Products
                         </button>
-                        <button id="purchases-btn" type="button" class="btn btn-sm btn-outline-secondary">
+
+                        <button id="purchases-btn" type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='purchases.html';">
                             <img src="images/colouredIcons/purchase_icon_col.png" width="35" height="35"
                                 alt="[purchase-icon]">
                             Purchases
                         </button>
-
                     </div>
                     <div class="mainBtnsRow">
-                        <button id="suppliers-btn" type="button" class="btn btn-sm btn-outline-secondary">
+                        <button id="suppliers-btn" type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='suppliers.html';">
                             <img src="images/colouredIcons/supplier_icon_col.png" width="35" height="35"
                                 alt="[supplier-icon]">
                             Suppliers
                         </button>
-                        <button id="orders-btn" type="button" class="btn btn-sm btn-outline-secondary">
+                        <button id="orders-btn" type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='orders.html';">
                             <img src="images/colouredIcons/order_icon_col.png" width="35" height="35"
                                 alt="[order-icon]">
                             Orders
                         </button>
                     </div>
-
 
                 </div>
             </main>
